@@ -6,11 +6,11 @@ use anyhow::{Context, Result};
 struct CliArgs {
     /// The pattern to look for
     pattern: String,
-
     /// The path of the file to search
     path: std::path::PathBuf,
 }
 
+/// Read a file and report missing param as Error
 fn read_file(path: &std::path::PathBuf) -> Result<String, anyhow::Error> {
     return std::fs::read_to_string(path)
     .with_context(|| format!("Error reading the path `{}`", path.display()));
